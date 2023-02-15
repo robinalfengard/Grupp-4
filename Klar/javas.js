@@ -11,10 +11,10 @@ const postalCode = document.getElementById("postalCode")
 const accountCreation = document.querySelector(".accountCreation")
 const birthYear = document.getElementById("birthyears")
 const errorMessage = document.querySelector(".errorMessage")
-const city = document.getElementById("city")
 
 
 init()
+createAccount()
 function validEmail() {
     if (email.value.includes(username.value)) {
         statusTry.innerHTML = "The username and email are to similar"
@@ -39,23 +39,16 @@ function validPassword() {
 }
 
 function createAccount() {
-
     if (username.value.length === 0 || email.value.length === 0 || password.value.length === 0
         || firstName.value.length === 0 || lastName.value.length === 0 ||
-        street.value.length === 0 || region.value.length === 0 || postalCode.value.length === 0 || city.value.length === 0) {
+        street.value.length === 0 || region.value.length === 0 || postalCode.value.length === 0) {
         accountCreation.classList.add("error")
         accountCreation.innerHTML = "You need to fill in all fields"
-    } else if (birthYear.value>2005){
-        accountCreation.classList.add("error")
-        accountCreation.innerHTML = "You are to young to create an account"
-    }
-    else {
+    } else {
         accountCreation.classList.remove("error")
-        accountCreation.innerHTML = "Creation of account successful"
-        window.open("http://127.0.0.1:5500/html3.html")
+        accountCreation.innerHTML = "Creation of account successfull"
     }
-}   
-
+}
 
 function init() {
     let options = ""
@@ -68,12 +61,10 @@ function init() {
 
 
 function togglePassword() {
-    if (password.type === "password" && passwordAgain.type === "password") {
+    if (password.type === "password") {
         password.type = "text"
-        passwordAgain.type = "text"
     } else {
         password.type = "password"
-        passwordAgain.type = "password"
     }
 }
 
